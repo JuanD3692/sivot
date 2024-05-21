@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Resultados Sivot</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename="css/styles1.css")}}">
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/prueba.css') }}" />
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="/">Regresar al inicio</a>
+
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                           
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">live °</div>
+                    </div>
+                </nav>
+            </div>
+
+            <div class=" text-center mt-5 container-fluid " id="layoutSidenav_content" >  
+                    <div class="container">
+                      <div class="row">
+                        {% for j in list %}
+                        <div class="col-lg-6 col-xs-12"> 
+                            {% for i in fotos %}  
+                           
+                              {% if  j[3]== i %}
+                              
+                                <img class="img-fluid" id="fotos" src="./static/uploads/{{i}}" >
+                                <br>
+                                {% for list1  in  votos %}                            
+                                  {% if list1[0]==j[1]    %}
+                                    {% if  list1[1] == j[2] %}
+                                      <h3>{{ j[1]}} {{ j[2]}}  </h3>   
+                                      <h3> Votos:  {{list1[2]}} </h3>
+                                      {% if total_votos > 0 %}                           
+                                      <h3>  {{ '%0.2f'|format(list1[2]/total_votos*100) }} %</h3>  
+                                      {% endif %} 
+                                {% endif %}                          
+                                {% endif %}
+                              {% endfor %}
+                              {% endif %}
+                            {% endfor %}             
+                            <br>
+                        </div>
+                        {% endfor %}
+                    </div>
+                  </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+      
+       
+          <footer class="py-1 bg-light mt-auto fixed-bottom container-fluid">
+            <div class="container-fluid px-4">
+              <div class="d-flex  align-items-center justify-content-end small">
+                <div class="px-5">Copyright &copy; Sivot 2022</div>
+                <div>
+                  <a href="#">Privacy Policy</a>
+                  &middot;
+                  <a href="#">Terms &amp; Conditions</a>
+                </div>
+              </div>
+            </div>
+          </footer>
+       </div>
+    </body>
+</html>

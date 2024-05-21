@@ -1,0 +1,55 @@
+{% extends 'html/base.html' %}
+
+{% block content %}
+ 
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 
+    <script src="{{ url_for('static', filename = 'js/eventos.js') }}"></script>
+         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ 
+    <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="border 2 text-center">
+          <br><br>
+    <h2>Candidatos</h2>
+   
+    <div>
+      <img class="m-1" height="250" width="250" class="img-fluid" name="candidatos" src="{{ url_for('static', filename = 'img/candi.jpg') }}" />
+    </div>
+
+    <form >
+      <button class="btn btn-danger" onclick="Reiniciarcandidatos('/Reiniciar_candidatos')">Reiniciar votos</button>
+    </form>
+    <br><br>
+    <form action="/descargar">
+      <button type="submit" class="btn btn-success">Descargar Lista</button>
+    </form>
+    <br>
+  </div>
+</div>
+<div class="col-lg-6">
+  <div class="border 2 text-center">
+    <br><br>
+    <h2>Usuarios</h2>
+    <div>
+      <img height="250" width="250" class="img-fluid" name="usuarios" src="{{ url_for('static', filename = 'img/usuario.jpg') }}" />
+    </div>
+
+    <form >
+      <button class="btn btn-danger" onclick="Reiniciarcandidatos('/Reiniciar_usuarios')" >Reiniciar votos</button>
+    </form>
+    <br>
+    <form action="/descargar1">
+      <button type="submit" class="btn btn-success m-3">Descargar Lista</button>
+    </form>
+    <br>
+  </div>
+</div>
+</div>
+</div>
+  
+{% endblock %}

@@ -1,0 +1,45 @@
+
+.caja{
+    justify-content: center; /*centra un contenido*/
+    background-color:azure ;
+    margin: 5%;
+    padding: 15px;
+    border: 5px solid slategray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  
+    flex-wrap: wrap /*en una misma línea o pueden fluir en varias líneas*/;
+
+}
+
+.votoform{
+    text-align: center;
+    padding: 5%;
+    background-color: white;
+    width: 200px; 
+    height: 230px; 
+    border: 3px solid #555;
+    display:block;
+    margin:auto;
+}
+
+img{
+    border: 3px solid black ;
+    padding: 0%;
+    display:block;
+    margin:auto;
+    }
+
+.boton{
+font-size: larger;
+margin: 5%;
+
+}
+
+input[type=radio] {
+   
+   width: 3%; height: 2.5ch;
+ }
+ 
+h1{
+    text-align: center;
+  padding-block-start: 5%;
+}

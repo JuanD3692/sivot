@@ -1,0 +1,118 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Bootstrap CSS -->
+  <!-- JavaScript Bundle with Popper -->
+  <link rel="stylesheet" href="{{ url_for('static',filename="css/styles1.css")}}">
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="icon" href="{{url_for('static',filename='img/bandera.png')}}">
+ 
+    
+    <title>Elecciones</title>
+</head>
+<body  class="bg-light">
+  
+  <div  class="invisible">
+    <input id="comenzar" type="text" value="{{ comenzar }}">
+    <input id="terminar" type="text" value="{{ terminar }}">
+    
+  </div>
+    <div class="container">
+    <div class="container-fluid  py-5 p-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-10">
+          <div class="card rounded-3 text-black">
+            <div class="row g-0">
+              <div class="col-lg-6">
+                <div class="card-body p-md-5 mx-md-4">
+                 
+                  <div class="d-flex justify-content-between ">
+                    <div>
+                <a class="text-decoration-none text-dark" href="/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi mx-2 bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                      <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/> 
+                    </svg>Regresar
+                  </div>
+                </a>
+                  <div >
+                    <a class="text-decoration-none text-dark" href="adminlogin">
+                       Administrar
+                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi  bi-file-person-fill" viewBox="0 0 16 16">
+                      <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z"/>
+                       </svg>
+                    </a>
+                  </div>
+                  </div>
+                 
+                  <div class="text-center">
+                    <img src="https://st2.depositphotos.com/1364916/6359/v/600/depositphotos_63590139-stock-illustration-teamwork-book-logo.jpg"
+                      style="width: 185px;" alt="logo">
+                    <h4 class="mt-1 mb-5 pb-1">Elecciones del consejo estudiantil</h4>
+                  </div>
+  
+                   <form id="login_form" method="POST">
+                    <input method="POST" type="hidden" name="csrf_token" value="{{ csrf_token() }}">  
+                    <p>Por favor ingrese su cedula para votar</p>
+  
+               
+                    <div class="form-outline mb-4">
+                      {% from '_macro.html' import render_field %}
+                      {{ render_field(form.cedula, class='form-control',id="cedula",value="", type="number",min="1000000", max="9999999999")}}
+                      <label class="form-label" for="form3Example4cg"></label>
+
+                      {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                        {% for message in messages %} 
+                        <h5  class="alert alert-success"> 
+                          {{ message }}
+                      </h5>
+                        {% endfor %}           
+                      {% endif %}
+                      {% endwith %} 
+                     </div>
+
+                  <div  class="d-flex align-items-center justify-content-center pb-4">                                  
+                      
+                      <button type="submit" class="btn btn-outline-danger" onclick="votar()">Votar</button>
+                                     
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-center pb-4">
+                      <p class="mb-0 me-2">¿No tiene cuenta?</p>
+                      <div>
+                        <button type="submit" class="btn btn-outline-danger" onclick="registrarse()">Crear una</button>  
+                      </div>                     
+                           
+                    </div>
+  
+                  </form>
+  
+                </div>
+              </div>
+              <div class="col-lg-6 d-flex align-items-center container-fluid">
+                <img class="img-fluid" src="/static/img/Logo_itsa.jpg">
+                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/eventos.js' )}}"> </script>
+  <script src="{{ url_for('static', filename='js/scripts.js' )}}"> </script><!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/jquery.ajaxchimp.js' )}}"> </script><!-- ajaxchimp -->
+  <script src="{{ url_for('static', filename='js/countdown.js' )}}"> </script><!-- ajaxchimp -->	
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
